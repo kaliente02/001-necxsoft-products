@@ -1,0 +1,1565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>NEXA CRM</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+</head>
+
+<body>
+
+    <!-- =========================
+         SIDEBAR
+    ========================== -->
+
+    <aside class="sidebar" id="sidebar">
+
+        <div class="logo">
+            <div class="logo-icon">N</div>
+            <div>
+                <strong>NEXA</strong>
+                <span>CRM</span>
+            </div>
+        </div>
+
+        <nav>
+
+            <p class="menu-title">MAIN</p>
+
+            <button class="nav-item active" data-page="dashboard">
+                <i class="fa-solid fa-chart-pie"></i>
+                <span>Dashboard</span>
+            </button>
+
+            <button class="nav-item" data-page="leads">
+                <i class="fa-solid fa-user-plus"></i>
+                <span>Leads</span>
+                <span class="badge">12</span>
+            </button>
+
+            <button class="nav-item" data-page="bookings">
+                <i class="fa-solid fa-calendar-check"></i>
+                <span>Bookings</span>
+                <span class="badge">5</span>
+            </button>
+
+            <button class="nav-item" data-page="clients">
+                <i class="fa-solid fa-users"></i>
+                <span>Clients</span>
+            </button>
+
+            <button class="nav-item" data-page="projects">
+                <i class="fa-solid fa-code"></i>
+                <span>Projects</span>
+            </button>
+
+            <p class="menu-title">MANAGEMENT</p>
+
+            <button class="nav-item" data-page="proposals">
+                <i class="fa-solid fa-file-lines"></i>
+                <span>Proposals</span>
+            </button>
+
+            <button class="nav-item" data-page="tasks">
+                <i class="fa-solid fa-list-check"></i>
+                <span>Tasks</span>
+            </button>
+
+            <button class="nav-item" data-page="followups">
+                <i class="fa-solid fa-bell"></i>
+                <span>Follow-ups</span>
+            </button>
+
+            <button class="nav-item" data-page="team">
+                <i class="fa-solid fa-user-group"></i>
+                <span>Team</span>
+            </button>
+
+            <p class="menu-title">SYSTEM</p>
+
+            <button class="nav-item" data-page="settings">
+                <i class="fa-solid fa-gear"></i>
+                <span>Settings</span>
+            </button>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+            <div class="user-mini">
+                <div class="avatar">JD</div>
+                <div>
+                    <strong>John Dy</strong>
+                    <small>Administrator</small>
+                </div>
+            </div>
+        </div>
+
+    </aside>
+
+
+    <!-- =========================
+         MAIN
+    ========================== -->
+
+    <main class="main">
+
+        <header class="topbar">
+
+            <button class="mobile-menu" id="mobileMenu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <div class="page-title">
+                <h1 id="pageTitle">Dashboard</h1>
+                <p id="pageSubtitle">
+                    Welcome back. Here's what's happening today.
+                </p>
+            </div>
+
+            <div class="top-actions">
+
+                <div class="search">
+                    <i class="fa-solid fa-search"></i>
+                    <input
+                        type="text"
+                        id="globalSearch"
+                        placeholder="Search..."
+                    >
+                </div>
+
+                <button class="icon-button notification">
+                    <i class="fa-regular fa-bell"></i>
+                    <span></span>
+                </button>
+
+                <div class="profile">
+                    <div class="avatar">JD</div>
+                    <div class="profile-info">
+                        <strong>John Dy</strong>
+                        <small>Admin</small>
+                    </div>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- =========================
+             CONTENT
+        ========================== -->
+
+        <section class="content">
+
+            <!-- DASHBOARD -->
+
+            <div class="page active-page" id="dashboard">
+
+                <div class="welcome-card">
+
+                    <div>
+                        <span class="eyebrow">OVERVIEW</span>
+
+                        <h2>
+                            Grow your website business.
+                        </h2>
+
+                        <p>
+                            Manage leads, bookings, clients and projects
+                            from one place.
+                        </p>
+                    </div>
+
+                    <button class="primary-btn" onclick="openModal()">
+                        <i class="fa-solid fa-plus"></i>
+                        Add Lead
+                    </button>
+
+                </div>
+
+
+                <div class="stats-grid">
+
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fa-solid fa-user-plus"></i>
+                        </div>
+
+                        <div>
+                            <span>Total Leads</span>
+                            <h3>128</h3>
+                            <small class="positive">
+                                +18.2% this month
+                            </small>
+                        </div>
+                    </div>
+
+
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fa-solid fa-calendar-check"></i>
+                        </div>
+
+                        <div>
+                            <span>New Bookings</span>
+                            <h3>24</h3>
+                            <small class="positive">
+                                +12.5% this month
+                            </small>
+                        </div>
+                    </div>
+
+
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fa-solid fa-users"></i>
+                        </div>
+
+                        <div>
+                            <span>Active Clients</span>
+                            <h3>36</h3>
+                            <small class="positive">
+                                +8.4% this month
+                            </small>
+                        </div>
+                    </div>
+
+
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fa-solid fa-code"></i>
+                        </div>
+
+                        <div>
+                            <span>Active Projects</span>
+                            <h3>17</h3>
+                            <small>
+                                4 due this week
+                            </small>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="dashboard-grid">
+
+                    <!-- RECENT BOOKINGS -->
+
+                    <div class="panel">
+
+                        <div class="panel-header">
+
+                            <div>
+                                <h3>Recent Bookings</h3>
+                                <p>Latest website requests</p>
+                            </div>
+
+                            <button class="text-btn"
+                                onclick="showPage('bookings')">
+                                View all
+                            </button>
+
+                        </div>
+
+
+                        <div class="booking-list">
+
+                            <div class="booking-row">
+
+                                <div class="client-avatar">AB</div>
+
+                                <div class="booking-info">
+                                    <strong>ABC Coffee Shop</strong>
+                                    <span>Business Website</span>
+                                </div>
+
+                                <div class="booking-date">
+                                    <strong>Sep 15</strong>
+                                    <span>2:00 PM</span>
+                                </div>
+
+                                <span class="status pending">
+                                    Pending
+                                </span>
+
+                            </div>
+
+
+                            <div class="booking-row">
+
+                                <div class="client-avatar">JM</div>
+
+                                <div class="booking-info">
+                                    <strong>Juan Motors</strong>
+                                    <span>E-commerce Website</span>
+                                </div>
+
+                                <div class="booking-date">
+                                    <strong>Sep 16</strong>
+                                    <span>10:00 AM</span>
+                                </div>
+
+                                <span class="status confirmed">
+                                    Confirmed
+                                </span>
+
+                            </div>
+
+
+                            <div class="booking-row">
+
+                                <div class="client-avatar">SK</div>
+
+                                <div class="booking-info">
+                                    <strong>SK Construction</strong>
+                                    <span>Company Website</span>
+                                </div>
+
+                                <div class="booking-date">
+                                    <strong>Sep 17</strong>
+                                    <span>1:00 PM</span>
+                                </div>
+
+                                <span class="status reviewing">
+                                    Reviewing
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- PIPELINE -->
+
+                    <div class="panel">
+
+                        <div class="panel-header">
+                            <div>
+                                <h3>Sales Pipeline</h3>
+                                <p>Lead conversion</p>
+                            </div>
+                        </div>
+
+
+                        <div class="pipeline">
+
+                            <div class="pipeline-item">
+                                <span>New</span>
+                                <strong>48</strong>
+                            </div>
+
+                            <div class="pipeline-item">
+                                <span>Contacted</span>
+                                <strong>32</strong>
+                            </div>
+
+                            <div class="pipeline-item">
+                                <span>Proposal</span>
+                                <strong>18</strong>
+                            </div>
+
+                            <div class="pipeline-item">
+                                <span>Won</span>
+                                <strong>12</strong>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- PROJECTS -->
+
+                <div class="panel">
+
+                    <div class="panel-header">
+
+                        <div>
+                            <h3>Active Projects</h3>
+                            <p>Current website development projects</p>
+                        </div>
+
+                        <button class="text-btn"
+                            onclick="showPage('projects')">
+                            View all
+                        </button>
+
+                    </div>
+
+
+                    <div class="table-wrapper">
+
+                        <table>
+
+                            <thead>
+                                <tr>
+                                    <th>Project</th>
+                                    <th>Client</th>
+                                    <th>Status</th>
+                                    <th>Progress</th>
+                                    <th>Deadline</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+
+                                <tr>
+                                    <td>
+                                        <strong>ABC Business Website</strong>
+                                    </td>
+
+                                    <td>ABC Coffee</td>
+
+                                    <td>
+                                        <span class="status development">
+                                            Development
+                                        </span>
+                                    </td>
+
+                                    <td>
+                                        <div class="progress">
+                                            <div style="width:72%"></div>
+                                        </div>
+                                        <small>72%</small>
+                                    </td>
+
+                                    <td>Sep 28, 2026</td>
+                                </tr>
+
+
+                                <tr>
+                                    <td>
+                                        <strong>Juan Motors Store</strong>
+                                    </td>
+
+                                    <td>Juan Motors</td>
+
+                                    <td>
+                                        <span class="status testing">
+                                            Testing
+                                        </span>
+                                    </td>
+
+                                    <td>
+                                        <div class="progress">
+                                            <div style="width:88%"></div>
+                                        </div>
+                                        <small>88%</small>
+                                    </td>
+
+                                    <td>Sep 20, 2026</td>
+                                </tr>
+
+
+                                <tr>
+                                    <td>
+                                        <strong>SK Construction</strong>
+                                    </td>
+
+                                    <td>SK Construction</td>
+
+                                    <td>
+                                        <span class="status design">
+                                            Design
+                                        </span>
+                                    </td>
+
+                                    <td>
+                                        <div class="progress">
+                                            <div style="width:35%"></div>
+                                        </div>
+                                        <small>35%</small>
+                                    </td>
+
+                                    <td>Oct 10, 2026</td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- LEADS -->
+
+            <div class="page" id="leads">
+
+                <div class="page-header">
+
+                    <div>
+                        <h2>Leads</h2>
+                        <p>Manage your potential customers.</p>
+                    </div>
+
+                    <button class="primary-btn" onclick="openModal()">
+                        <i class="fa-solid fa-plus"></i>
+                        Add Lead
+                    </button>
+
+                </div>
+
+
+                <div class="filter-bar">
+
+                    <div class="search-input">
+                        <i class="fa-solid fa-search"></i>
+                        <input
+                            type="text"
+                            placeholder="Search leads..."
+                            id="leadSearch"
+                        >
+                    </div>
+
+                    <select>
+                        <option>All Status</option>
+                        <option>New</option>
+                        <option>Contacted</option>
+                        <option>Qualified</option>
+                        <option>Proposal Sent</option>
+                        <option>Won</option>
+                        <option>Lost</option>
+                    </select>
+
+                    <select>
+                        <option>All Sources</option>
+                        <option>Website</option>
+                        <option>Facebook</option>
+                        <option>Referral</option>
+                        <option>Email</option>
+                    </select>
+
+                </div>
+
+
+                <div class="panel">
+
+                    <div class="table-wrapper">
+
+                        <table id="leadsTable">
+
+                            <thead>
+                                <tr>
+                                    <th>Customer</th>
+                                    <th>Business</th>
+                                    <th>Website Type</th>
+                                    <th>Source</th>
+                                    <th>Status</th>
+                                    <th>Date</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+
+                                <tr>
+                                    <td>
+                                        <div class="table-user">
+                                            <div class="client-avatar">AB</div>
+                                            <div>
+                                                <strong>Alex Brown</strong>
+                                                <span>alex@email.com</span>
+                                            </div>
+                                        </div>
+                                    </td>
+
+                                    <td>ABC Coffee</td>
+                                    <td>Business Website</td>
+                                    <td>Website</td>
+
+                                    <td>
+                                        <span class="status pending">
+                                            New
+                                        </span>
+                                    </td>
+
+                                    <td>Sep 11, 2026</td>
+
+                                    <td>
+                                        <button class="more-btn">
+                                            <i class="fa-solid fa-ellipsis"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+
+
+                                <tr>
+                                    <td>
+                                        <div class="table-user">
+                                            <div class="client-avatar">JM</div>
+                                            <div>
+                                                <strong>James Miller</strong>
+                                                <span>james@email.com</span>
+                                            </div>
+                                        </div>
+                                    </td>
+
+                                    <td>Juan Motors</td>
+                                    <td>E-commerce</td>
+                                    <td>Facebook</td>
+
+                                    <td>
+                                        <span class="status confirmed">
+                                            Qualified
+                                        </span>
+                                    </td>
+
+                                    <td>Sep 10, 2026</td>
+
+                                    <td>
+                                        <button class="more-btn">
+                                            <i class="fa-solid fa-ellipsis"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+
+
+                                <tr>
+                                    <td>
+                                        <div class="table-user">
+                                            <div class="client-avatar">SK</div>
+                                            <div>
+                                                <strong>Sarah Kim</strong>
+                                                <span>sarah@email.com</span>
+                                            </div>
+                                        </div>
+                                    </td>
+
+                                    <td>SK Construction</td>
+                                    <td>Company Website</td>
+                                    <td>Referral</td>
+
+                                    <td>
+                                        <span class="status reviewing">
+                                            Proposal Sent
+                                        </span>
+                                    </td>
+
+                                    <td>Sep 8, 2026</td>
+
+                                    <td>
+                                        <button class="more-btn">
+                                            <i class="fa-solid fa-ellipsis"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- BOOKINGS -->
+
+            <div class="page" id="bookings">
+
+                <div class="page-header">
+
+                    <div>
+                        <h2>Bookings</h2>
+                        <p>Website development booking requests.</p>
+                    </div>
+
+                </div>
+
+
+                <div class="stats-grid">
+
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fa-solid fa-clock"></i>
+                        </div>
+
+                        <div>
+                            <span>Pending</span>
+                            <h3>5</h3>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fa-solid fa-eye"></i>
+                        </div>
+
+                        <div>
+                            <span>Reviewing</span>
+                            <h3>8</h3>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fa-solid fa-check"></i>
+                        </div>
+
+                        <div>
+                            <span>Confirmed</span>
+                            <h3>11</h3>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="panel">
+
+                    <div class="table-wrapper">
+
+                        <table>
+
+                            <thead>
+                                <tr>
+                                    <th>Booking ID</th>
+                                    <th>Customer</th>
+                                    <th>Website Type</th>
+                                    <th>Preferred Date</th>
+                                    <th>Budget</th>
+                                    <th>Status</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+
+                                <tr>
+                                    <td>
+                                        <strong>#WEB-00125</strong>
+                                    </td>
+
+                                    <td>Alex Brown</td>
+
+                                    <td>Business Website</td>
+
+                                    <td>Sep 15, 2026</td>
+
+                                    <td>₱10k–₱20k</td>
+
+                                    <td>
+                                        <span class="status pending">
+                                            Pending
+                                        </span>
+                                    </td>
+
+                                    <td>
+                                        <button class="primary-small">
+                                            View
+                                        </button>
+                                    </td>
+                                </tr>
+
+
+                                <tr>
+                                    <td>
+                                        <strong>#WEB-00124</strong>
+                                    </td>
+
+                                    <td>James Miller</td>
+
+                                    <td>E-commerce</td>
+
+                                    <td>Sep 16, 2026</td>
+
+                                    <td>₱20k–₱50k</td>
+
+                                    <td>
+                                        <span class="status confirmed">
+                                            Confirmed
+                                        </span>
+                                    </td>
+
+                                    <td>
+                                        <button class="primary-small">
+                                            View
+                                        </button>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- CLIENTS -->
+
+            <div class="page" id="clients">
+
+                <div class="page-header">
+
+                    <div>
+                        <h2>Clients</h2>
+                        <p>Manage your existing customers.</p>
+                    </div>
+
+                </div>
+
+
+                <div class="client-grid">
+
+                    <div class="client-card">
+
+                        <div class="client-top">
+
+                            <div class="client-avatar large">
+                                AB
+                            </div>
+
+                            <span class="status confirmed">
+                                Active
+                            </span>
+
+                        </div>
+
+                        <h3>Alex Brown</h3>
+
+                        <p>ABC Coffee Shop</p>
+
+                        <div class="client-details">
+                            <span>
+                                <i class="fa-regular fa-envelope"></i>
+                                alex@email.com
+                            </span>
+
+                            <span>
+                                <i class="fa-solid fa-globe"></i>
+                                2 Projects
+                            </span>
+                        </div>
+
+                        <button class="outline-btn">
+                            View Client
+                        </button>
+
+                    </div>
+
+
+                    <div class="client-card">
+
+                        <div class="client-top">
+
+                            <div class="client-avatar large">
+                                JM
+                            </div>
+
+                            <span class="status confirmed">
+                                Active
+                            </span>
+
+                        </div>
+
+                        <h3>James Miller</h3>
+
+                        <p>Juan Motors</p>
+
+                        <div class="client-details">
+                            <span>
+                                <i class="fa-regular fa-envelope"></i>
+                                james@email.com
+                            </span>
+
+                            <span>
+                                <i class="fa-solid fa-globe"></i>
+                                1 Project
+                            </span>
+                        </div>
+
+                        <button class="outline-btn">
+                            View Client
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- PROJECTS -->
+
+            <div class="page" id="projects">
+
+                <div class="page-header">
+
+                    <div>
+                        <h2>Projects</h2>
+                        <p>Track website development projects.</p>
+                    </div>
+
+                    <button class="primary-btn">
+                        <i class="fa-solid fa-plus"></i>
+                        New Project
+                    </button>
+
+                </div>
+
+
+                <div class="project-grid">
+
+                    <div class="project-card">
+
+                        <div class="project-header">
+
+                            <div class="project-icon">
+                                <i class="fa-solid fa-code"></i>
+                            </div>
+
+                            <span class="status development">
+                                Development
+                            </span>
+
+                        </div>
+
+                        <h3>ABC Business Website</h3>
+
+                        <p>ABC Coffee Shop</p>
+
+                        <div class="project-progress">
+
+                            <div class="progress-label">
+                                <span>Progress</span>
+                                <strong>72%</strong>
+                            </div>
+
+                            <div class="progress">
+                                <div style="width:72%"></div>
+                            </div>
+
+                        </div>
+
+                        <div class="project-footer">
+                            <span>
+                                <i class="fa-regular fa-calendar"></i>
+                                Sep 28, 2026
+                            </span>
+
+                            <div class="avatar-small">
+                                JD
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="project-card">
+
+                        <div class="project-header">
+
+                            <div class="project-icon">
+                                <i class="fa-solid fa-cart-shopping"></i>
+                            </div>
+
+                            <span class="status testing">
+                                Testing
+                            </span>
+
+                        </div>
+
+                        <h3>Juan Motors Store</h3>
+
+                        <p>Juan Motors</p>
+
+                        <div class="project-progress">
+
+                            <div class="progress-label">
+                                <span>Progress</span>
+                                <strong>88%</strong>
+                            </div>
+
+                            <div class="progress">
+                                <div style="width:88%"></div>
+                            </div>
+
+                        </div>
+
+                        <div class="project-footer">
+                            <span>
+                                <i class="fa-regular fa-calendar"></i>
+                                Sep 20, 2026
+                            </span>
+
+                            <div class="avatar-small">
+                                JD
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- PROPOSALS -->
+
+            <div class="page" id="proposals">
+
+                <div class="page-header">
+
+                    <div>
+                        <h2>Proposals</h2>
+                        <p>Manage website development proposals.</p>
+                    </div>
+
+                    <button class="primary-btn">
+                        <i class="fa-solid fa-plus"></i>
+                        Create Proposal
+                    </button>
+
+                </div>
+
+
+                <div class="panel">
+
+                    <div class="table-wrapper">
+
+                        <table>
+
+                            <thead>
+                                <tr>
+                                    <th>Proposal</th>
+                                    <th>Client</th>
+                                    <th>Amount</th>
+                                    <th>Sent</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+
+                                <tr>
+                                    <td>
+                                        <strong>Website Package #102</strong>
+                                    </td>
+
+                                    <td>ABC Coffee</td>
+
+                                    <td>₱18,500</td>
+
+                                    <td>Sep 10, 2026</td>
+
+                                    <td>
+                                        <span class="status confirmed">
+                                            Accepted
+                                        </span>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <strong>E-commerce Package #101</strong>
+                                    </td>
+
+                                    <td>Juan Motors</td>
+
+                                    <td>₱35,000</td>
+
+                                    <td>Sep 9, 2026</td>
+
+                                    <td>
+                                        <span class="status reviewing">
+                                            Sent
+                                        </span>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- TASKS -->
+
+            <div class="page" id="tasks">
+
+                <div class="page-header">
+
+                    <div>
+                        <h2>Tasks</h2>
+                        <p>Manage your team's development tasks.</p>
+                    </div>
+
+                    <button class="primary-btn">
+                        <i class="fa-solid fa-plus"></i>
+                        Add Task
+                    </button>
+
+                </div>
+
+
+                <div class="kanban">
+
+                    <div class="kanban-column">
+
+                        <div class="kanban-title">
+                            <span>TO DO</span>
+                            <strong>3</strong>
+                        </div>
+
+                        <div class="task-card">
+                            <span class="task-priority high">
+                                HIGH
+                            </span>
+
+                            <h3>Create homepage design</h3>
+
+                            <p>ABC Coffee Website</p>
+
+                            <div class="task-footer">
+                                <span>Sep 13</span>
+                                <div class="avatar-small">JD</div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="kanban-column">
+
+                        <div class="kanban-title">
+                            <span>IN PROGRESS</span>
+                            <strong>4</strong>
+                        </div>
+
+                        <div class="task-card">
+
+                            <span class="task-priority medium">
+                                MEDIUM
+                            </span>
+
+                            <h3>Build contact page</h3>
+
+                            <p>Juan Motors</p>
+
+                            <div class="task-footer">
+                                <span>Sep 14</span>
+                                <div class="avatar-small">JD</div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="kanban-column">
+
+                        <div class="kanban-title">
+                            <span>REVIEW</span>
+                            <strong>2</strong>
+                        </div>
+
+                        <div class="task-card">
+
+                            <span class="task-priority low">
+                                LOW
+                            </span>
+
+                            <h3>Mobile responsive check</h3>
+
+                            <p>SK Construction</p>
+
+                            <div class="task-footer">
+                                <span>Sep 15</span>
+                                <div class="avatar-small">JD</div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="kanban-column">
+
+                        <div class="kanban-title">
+                            <span>COMPLETED</span>
+                            <strong>8</strong>
+                        </div>
+
+                        <div class="task-card completed">
+
+                            <i class="fa-solid fa-circle-check"></i>
+
+                            <h3>Setup database</h3>
+
+                            <p>ABC Coffee</p>
+
+                            <div class="task-footer">
+                                <span>Completed</span>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- FOLLOW UPS -->
+
+            <div class="page" id="followups">
+
+                <div class="page-header">
+
+                    <div>
+                        <h2>Follow-ups</h2>
+                        <p>Never miss an opportunity.</p>
+                    </div>
+
+                    <button class="primary-btn">
+                        <i class="fa-solid fa-plus"></i>
+                        Schedule Follow-up
+                    </button>
+
+                </div>
+
+
+                <div class="panel">
+
+                    <div class="followup">
+
+                        <div class="follow-icon">
+                            <i class="fa-solid fa-message"></i>
+                        </div>
+
+                        <div class="follow-info">
+                            <h3>Contact Alex Brown</h3>
+                            <p>ABC Coffee — Messenger</p>
+                        </div>
+
+                        <div class="follow-date">
+                            <strong>Today</strong>
+                            <span>2:00 PM</span>
+                        </div>
+
+                        <span class="status pending">
+                            Pending
+                        </span>
+
+                    </div>
+
+
+                    <div class="followup">
+
+                        <div class="follow-icon">
+                            <i class="fa-solid fa-phone"></i>
+                        </div>
+
+                        <div class="follow-info">
+                            <h3>Call James Miller</h3>
+                            <p>Juan Motors — Phone</p>
+                        </div>
+
+                        <div class="follow-date">
+                            <strong>Tomorrow</strong>
+                            <span>10:00 AM</span>
+                        </div>
+
+                        <span class="status reviewing">
+                            Scheduled
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- TEAM -->
+
+            <div class="page" id="team">
+
+                <div class="page-header">
+
+                    <div>
+                        <h2>Team</h2>
+                        <p>Manage your CRM team members.</p>
+                    </div>
+
+                    <button class="primary-btn">
+                        <i class="fa-solid fa-plus"></i>
+                        Add Member
+                    </button>
+
+                </div>
+
+
+                <div class="client-grid">
+
+                    <div class="client-card">
+
+                        <div class="client-top">
+                            <div class="client-avatar large">
+                                JD
+                            </div>
+
+                            <span class="status confirmed">
+                                Active
+                            </span>
+                        </div>
+
+                        <h3>John Dy</h3>
+
+                        <p>Administrator</p>
+
+                        <div class="client-details">
+                            <span>
+                                <i class="fa-regular fa-envelope"></i>
+                                admin@nexa.com
+                            </span>
+
+                            <span>
+                                <i class="fa-solid fa-shield"></i>
+                                Full Access
+                            </span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="client-card">
+
+                        <div class="client-top">
+                            <div class="client-avatar large">
+                                MS
+                            </div>
+
+                            <span class="status confirmed">
+                                Active
+                            </span>
+                        </div>
+
+                        <h3>Maria Santos</h3>
+
+                        <p>Developer</p>
+
+                        <div class="client-details">
+                            <span>
+                                <i class="fa-regular fa-envelope"></i>
+                                maria@nexa.com
+                            </span>
+
+                            <span>
+                                <i class="fa-solid fa-code"></i>
+                                Developer Access
+                            </span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- SETTINGS -->
+
+            <div class="page" id="settings">
+
+                <div class="page-header">
+
+                    <div>
+                        <h2>Settings</h2>
+                        <p>Configure your CRM.</p>
+                    </div>
+
+                </div>
+
+                <div class="panel settings-panel">
+
+                    <h3>General Settings</h3>
+
+                    <label>
+                        Business Name
+                        <input type="text" value="NEXA">
+                    </label>
+
+                    <label>
+                        Business Email
+                        <input
+                            type="email"
+                            value="support.nexa.web@gmail.com"
+                        >
+                    </label>
+
+                    <button class="primary-btn">
+                        Save Changes
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         ADD LEAD MODAL
+    ========================== -->
+
+    <div class="modal-overlay" id="modal">
+
+        <div class="modal">
+
+            <div class="modal-header">
+
+                <div>
+                    <h2>Add New Lead</h2>
+                    <p>Add a potential website client.</p>
+                </div>
+
+                <button class="close-btn" onclick="closeModal()">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+
+            </div>
+
+
+            <form id="leadForm">
+
+                <div class="form-grid">
+
+                    <label>
+                        Full Name
+                        <input
+                            type="text"
+                            placeholder="John Doe"
+                            required
+                        >
+                    </label>
+
+                    <label>
+                        Business Name
+                        <input
+                            type="text"
+                            placeholder="ABC Business"
+                            required
+                        >
+                    </label>
+
+                    <label>
+                        Email Address
+                        <input
+                            type="email"
+                            placeholder="john@email.com"
+                            required
+                        >
+                    </label>
+
+                    <label>
+                        Phone Number
+                        <input
+                            type="text"
+                            placeholder="+63 900 000 0000"
+                        >
+                    </label>
+
+                    <label>
+                        Website Type
+
+                        <select>
+                            <option>Business Website</option>
+                            <option>E-commerce</option>
+                            <option>Portfolio</option>
+                            <option>Landing Page</option>
+                            <option>Blog</option>
+                            <option>Other</option>
+                        </select>
+
+                    </label>
+
+                    <label>
+                        Lead Source
+
+                        <select>
+                            <option>Website</option>
+                            <option>Facebook</option>
+                            <option>Messenger</option>
+                            <option>Referral</option>
+                            <option>Email</option>
+                            <option>Other</option>
+                        </select>
+
+                    </label>
+
+                </div>
+
+
+                <label>
+                    Project Description
+
+                    <textarea
+                        placeholder="Tell us about the customer's website requirements..."
+                    ></textarea>
+
+                </label>
+
+
+                <div class="modal-actions">
+
+                    <button
+                        type="button"
+                        class="outline-btn"
+                        onclick="closeModal()"
+                    >
+                        Cancel
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="primary-btn"
+                    >
+                        Add Lead
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
