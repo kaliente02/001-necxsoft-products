@@ -1,0 +1,8 @@
+{
+  "$schema": "https://developers.cloudflare.com/workers/wrangler/config-schema.json",
+  "name": "necxsoft-booking",
+  "compatibility_date": "2026-09-21",
+  "assets": {
+    "directory": "."
+  }
+}
