@@ -29,12 +29,49 @@ const FEATURES = [
   "Blog", "Google Maps", "Social Media Integration", "Other",
 ];
 
+// Features that require significant back-end work (custom database schemas,
+// authentication, payment gateway integration, etc.) automatically add a
+// development surcharge on top of the base project cost, since these are
+// difficult / time-consuming to program on the back end.
+const FEATURE_FEES = {
+  "Online Booking": 3000,
+  "Online Store": 8000,
+  "Payment Integration": 6000,
+  "User Login": 3000,
+  "Admin Dashboard": 5000,
+  "Database": 4000,
+};
+
 const TIMELINES = [
   "As soon as possible", "Within 2 weeks", "Within 1 month",
   "Within 2–3 months", "Flexible / No specific deadline",
 ];
 
+// Rushing a project ("As soon as possible") automatically adds a rush fee.
+const RUSH_FEE = 5000;
+const RUSH_TIMELINE = "As soon as possible";
+
 const BUDGETS = ["Under ₱10,000", "₱10,000–₱20,000", "₱20,000–₱50,000", "₱50,000+", "Not sure yet"];
+
+function formatPeso(n) {
+  return "₱" + n.toLocaleString("en-PH");
+}
+
+function getFeatureFee(feat) {
+  return FEATURE_FEES[feat] || 0;
+}
+
+function calcFeaturesFee(features) {
+  return (features || []).reduce((sum, f) => sum + getFeatureFee(f), 0);
+}
+
+function calcRushFee(timeline) {
+  return timeline === RUSH_TIMELINE ? RUSH_FEE : 0;
+}
+
+function calcAdditionalFee(form) {
+  return calcFeaturesFee(form.features) + calcRushFee(form.timeline);
+}
 
 const CONTACT_METHODS = [
   { id: "email", label: "Email", icon: "mail" },
@@ -204,11 +241,14 @@ function renderProgressRail() {
     </div>`;
 }
 
-function renderPill({ label, selected, dataAttr, iconName }) {
+function renderPill({ label, selected, dataAttr, iconName, feeLabel }) {
   return `
-    <button type="button" class="pill ${selected ? "selected" : ""}" ${dataAttr}>
+    <button type="button" class="pill ${selected ? "selected" : ""} ${feeLabel ? "has-fee" : ""}" ${dataAttr}>
       ${iconName ? icon(iconName, "icon-type") : ""}
-      <span>${esc(label)}</span>
+      <span class="pill-text">
+        <span>${esc(label)}</span>
+        ${feeLabel ? `<span class="pill-fee">${esc(feeLabel)}</span>` : ""}
+      </span>
       ${selected ? `<span class="check">${ICONS.check}</span>` : ""}
     </button>`;
 }
@@ -285,13 +325,23 @@ function renderStepProject() {
 
       <div class="field-block">
         <label class="field-label">Desired features</label>
+        <p class="field-hint">Features marked with a fee require extra back-end development (database, authentication, payment gateways, etc.) and automatically add to your project cost.</p>
         <div class="pill-grid cols-3">
-          ${FEATURES.map(feat => renderPill({
-            label: feat,
-            selected: f.features.includes(feat),
-            dataAttr: `data-toggle-feature="${esc(feat)}"`,
-          })).join("")}
+          ${FEATURES.map(feat => {
+            const fee = getFeatureFee(feat);
+            return renderPill({
+              label: feat,
+              selected: f.features.includes(feat),
+              dataAttr: `data-toggle-feature="${esc(feat)}"`,
+              feeLabel: fee ? `+${formatPeso(fee)}` : "",
+            });
+          }).join("")}
         </div>
+        ${calcFeaturesFee(f.features) > 0 ? `
+          <div class="fee-note">
+            <span>Additional back-end development cost</span>
+            <strong>${formatPeso(calcFeaturesFee(f.features))}</strong>
+          </div>` : ""}
       </div>
 
       <div class="field-block">
@@ -310,13 +360,20 @@ function renderStepTimeline() {
 
       <div class="field-block">
         <label class="field-label">When would you like your website completed?<span class="req">*</span></label>
+        <p class="field-hint">Choosing "As soon as possible" automatically adds a rush development fee.</p>
         <div class="pill-grid">
           ${TIMELINES.map(t => renderPill({
             label: t,
             selected: f.timeline === t,
             dataAttr: `data-select="timeline" data-value="${esc(t)}"`,
+            feeLabel: t === RUSH_TIMELINE ? `+${formatPeso(RUSH_FEE)}` : "",
           })).join("")}
         </div>
+        ${calcRushFee(f.timeline) > 0 ? `
+          <div class="fee-note">
+            <span>Rush fee (as soon as possible)</span>
+            <strong>${formatPeso(calcRushFee(f.timeline))}</strong>
+          </div>` : ""}
       </div>
 
       <div class="field-block">
@@ -329,6 +386,12 @@ function renderStepTimeline() {
           })).join("")}
         </div>
       </div>
+
+      ${calcAdditionalFee(f) > 0 ? `
+        <div class="field-block fee-total">
+          <span>Estimated additional development cost</span>
+          <strong>${formatPeso(calcAdditionalFee(f))}</strong>
+        </div>` : ""}
     </div>`;
 }
 
@@ -392,6 +455,26 @@ function renderStepSummary() {
         ${summaryRow("Preferred time", f.time || "—")}
         ${summaryRow("Project description", f.description || "—")}
       </div>
+
+      ${calcAdditionalFee(f) > 0 ? `
+        <div class="cost-breakdown">
+          <h3>Additional development cost</h3>
+          ${f.features.filter(feat => getFeatureFee(feat) > 0).map(feat => `
+            <div class="summary-row">
+              <span class="s-label">${esc(feat)}</span>
+              <span class="s-value">${formatPeso(getFeatureFee(feat))}</span>
+            </div>`).join("")}
+          ${calcRushFee(f.timeline) > 0 ? `
+            <div class="summary-row">
+              <span class="s-label">Rush fee (as soon as possible)</span>
+              <span class="s-value">${formatPeso(calcRushFee(f.timeline))}</span>
+            </div>` : ""}
+          <div class="summary-row cost-total-row">
+            <span class="s-label">Total additional cost</span>
+            <span class="s-value">${formatPeso(calcAdditionalFee(f))}</span>
+          </div>
+          <p class="fee-disclaimer">This is an estimate on top of your base project cost, added automatically based on the back-end features and timeline you selected. Final pricing will be confirmed during consultation.</p>
+        </div>` : ""}
     </div>`;
 }
 
@@ -466,7 +549,7 @@ function renderBookingsView() {
     </div>
 
     <div class="booking-list">
-      ${state.bookings.length === 0 ? `<p style="color: #a3a3a3;">No bookings yet.</p>` : state.bookings.map(b => `
+      ${state.bookings.length === 0 ? `<p style="color: var(--gray-400);">No bookings yet.</p>` : state.bookings.map(b => `
         <div class="booking-card">
           <div class="booking-card-top">
             <div>
